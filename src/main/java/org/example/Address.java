@@ -1,13 +1,5 @@
 package org.example;
 /*
-- Fields
-
-  1. `int streetNo`
-  2. `String street`
-  3. `String city`
-  4. `String province`
-  5. `String postalCode`
-  6. `String country`
 
 - Methods
 
@@ -30,4 +22,10 @@ package org.example;
  */
 public class Address {
 
+    private int streetNo;
+    private String street;
+    private String city;
+    private String province;
+    private String postalCode;
+    private String country;
 }
