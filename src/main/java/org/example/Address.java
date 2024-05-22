@@ -9,7 +9,10 @@ package org.example;
      1. if the length is `6`, then it must follow the format: `CDCDCD`,
      2. if the length is `7`, then it must follow the format: `CDC DCD`.
      3. where `C` is a character, while `D` is a digit. Case-insensitive;
-     4. Note: this method is a static method, which means it requires a parameter of `postalCode` instead of using the field `postalCode`, the reason of this is because this method should be called in the constructor, before assigning the input `postalCode` to the field `postalCode`, only valid `postalCode` will be assigned to fields, or `null` will be assigned
+     4. Note: this method is a static method, which means it requires a parameter of `postalCode` instead of using
+     the field `postalCode`, the reason of this is because this method should be called in the constructor,
+     before assigning the input `postalCode` to the field `postalCode`,
+     only valid `postalCode` will be assigned to fields, or `null` will be assigned
 
   2. All argument Constructor, in which the method `isPostalCodeValid()` will first be called to check if the
   parameter `postalCode` is valid or not, if it is valid, then set all fields, while postal code with all character
@@ -28,4 +31,27 @@ public class Address {
     private String province;
     private String postalCode;
     private String country;
+
+    /**
+     * checks if a postcode is valid or not
+     * @param postalCode the input postal code
+     * @return if a postal code has a length of 6 && is under the format CDCDCD or has a length of 7 && is under the
+     * format CDC DCD
+     */
+    public static boolean isPostalCodeValid(String postalCode) {
+        postalCode.toLowerCase();
+
+       /* if (postalCode.length() == 6) {
+            for (int i = 0; i < postalCode.length(); i++) {
+                if (postalCode.charAt(i) % 2 == 0) {
+
+                }
+            }
+        } else if (postalCode.length() == 7) {
+
+        } else {
+            return false;
+        }*/
+        return false;
+    }
 }
