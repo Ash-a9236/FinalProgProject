@@ -17,6 +17,8 @@ department name should only contain letters or space
 6. setter
  */
 public class Department {
-
+    private String departmentId;
+    private String departmentName;
+    private static int nextId;
 
 }

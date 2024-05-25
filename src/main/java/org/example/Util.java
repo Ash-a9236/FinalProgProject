@@ -11,4 +11,11 @@ such as `Yi Wang`, `Computer Science`. You can
  */
 public class Util {
 
+
+    public static String toTitleCase(String strIn) {
+        String strOut = "";
+
+
+        return strOut;
+    }
 }
