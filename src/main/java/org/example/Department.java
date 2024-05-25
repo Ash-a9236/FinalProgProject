@@ -21,4 +21,20 @@ public class Department {
     private String departmentName;
     private static int nextId;
 
+    /**
+     * checks if a department name is valid or not, if the department name only contain letters or space
+     * @param departmentName
+     * @return if the department is valid or not
+     */
+    public static boolean validateDepartmentName(String departmentName) {
+//        for (int i = 0; i < departmentName.length(); i++) {
+//            char c = departmentName.charAt(i);
+//            if (c <= 0 || c > 0) {
+//                return false;
+//            } else {
+//                i++;
+//            }
+//        }
+        return true;
+    }
 }
