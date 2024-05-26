@@ -91,19 +91,50 @@ public class Student {
     }
      */
 
-//    public boolean registerCourse(Course course) {
-//        if (registeredCourses.contains(course)) {
-//            return false;
-//        }
-//
-//        registeredCourses.add(course);
-//        course.getRegisteredStudents().add(this);
-//
-//        for (Assignment assignment : course.getAssignments()) {
-//            assignment.getScores().add(null);
-//        }
-//
-//        return true;
-//    }
+    public boolean registerCourse(Course course) {
+        if (registeredCourses.contains(course)) {
+            return false;
+        }
 
+        registeredCourses.add(course);
+        course.getRegisteredStudents().add(this);
+
+        for (Assignment assignment : course.getAssignments()) {
+            assignment.getScores().add(null);
+        }
+
+        return true;
+    }
+
+    public boolean dropCourse(Course course) {
+        if (!registeredCourses.contains(course)) {
+            return false;
+        }
+
+        registeredCourses.remove(course);
+        course.getRegisteredStudents().remove(this);
+
+        return true;
+    }
+
+    public void setStudentName(String studentName) {
+        this.studentName = Util.toTitleCase(studentName);
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "studentId='" + studentId + '\'' +
+                ", studentName='" + studentName + '\'' +
+                ", gender=" + gender +
+                ", address=" + address +
+                ", department=" + department +
+                ", registeredCourses=" + registeredCourses +
+                '}';
+    }
+
+    public String toSimplifiedString2() {
+        return "Student ID: " + studentId + ", Student Name: " + studentName + ", Department: " +
+                department.getDepartmentName();
+    }
 }
