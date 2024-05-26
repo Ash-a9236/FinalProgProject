@@ -96,4 +96,8 @@ public class Assignment {
     public ArrayList<Integer> getScores() {
         return scores;
     }
+
+    public int getMaxScore() {
+        return maxScore;
+    }
 }
