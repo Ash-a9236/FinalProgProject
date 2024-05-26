@@ -53,4 +53,12 @@ public class Department {
 
         return departmentName.matches("[a-zA-Z_0-9]");
     }
+
+    public String getDepartmentName() {
+        return departmentName;
+    }
+
+    public String getDepartmentId() {
+        return departmentId;
+    }
 }

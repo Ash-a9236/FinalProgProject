@@ -278,7 +278,28 @@ for each student.
 the `departmentName` the `assignments`, and the `registeredStudents` (only the `studentId`,
 the `studentName` and the `departmentName`)
  */
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Course ID : ").append(courseId).append("\n");
+        sb.append("Course Name : ").append(courseName).append("\n");
+        sb.append("Credits : ").append(credits).append("\n");
+        sb.append("Department : ").append(department.getDepartmentName()).append("\n");
 
+        sb.append("Assignments :\n");
+        for (Assignment assignment : assignments) {
+            sb.append("\t").append(assignment.getAssignmentName()).append(", Weight : ")
+                    .append(assignment.getWeight()).append("\n");
+        }
+
+        sb.append("Registered Students :\n");
+        for (Student student : registeredStudents) {
+            sb.append("\tStudent ID : ").append(student.getStudentId()).append(", Student Name : ")
+                    .append(student.getStudentName()).append(", Department : ")
+                    .append(student.getDepartment()).append("\n");
+        }
+
+        return sb.toString();
+    }
 
 
 
@@ -352,26 +373,5 @@ the `studentName` and the `departmentName`)
 //
 
 //
-//    public String toString() {
-//        StringBuilder sb = new StringBuilder();
-//        sb.append("Course ID : ").append(courseId).append("\n");
-//        sb.append("Course Name : ").append(courseName).append("\n");
-//        sb.append("Credits : ").append(credits).append("\n");
-//        sb.append("Department : ").append(department.getDepartmentName()).append("\n");
-//
-//        sb.append("Assignments :\n");
-//        for (Assignment assignment : assignments) {
-//            sb.append("\t").append(assignment.getAssignmentName()).append(", Weight : ")
-//                    .append(assignment.getWeight()).append("\n");
-//        }
-//
-//        sb.append("Registered Students :\n");
-//        for (Student student : registeredStudents) {
-//            sb.append("\tStudent ID : ").append(student.getStudentId()).append(", Student Name : ")
-//                    .append(student.getStudentName()).append(", Department : ")
-//                    .append(student.getDepartment().getDepartmentName()).append("\n");
-//        }
-//
-//        return sb.toString();
-//    }
+
 }

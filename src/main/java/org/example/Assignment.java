@@ -100,4 +100,12 @@ public class Assignment {
     public int getMaxScore() {
         return maxScore;
     }
+
+    public String getAssignmentName() {
+        return assignmentName;
+    }
+
+    public String getAssignmentId() {
+        return assignmentId;
+    }
 }

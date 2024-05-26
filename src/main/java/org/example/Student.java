@@ -154,4 +154,16 @@ the `gender`, the `address` and the `department`, and the `registeredCourses`
         return "Student ID: " + studentId + ", Student Name: " + studentName + ", Department: " +
                 department.getDepartmentName();
     }
+
+    public String getStudentName() {
+        return studentName;
+    }
+
+    public String getStudentId() {
+        return studentId;
+    }
+
+    public org.example.Department getDepartment() {
+        return department;
+    }
 }
