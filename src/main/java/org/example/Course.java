@@ -79,4 +79,25 @@ public class Course {
         return Math.abs(sum - 1.0) < 0.001;
     }
 
+    /**
+     * adds a student to the student list of the course, and adds a new null element to each assignment of this course,
+     * and add a new null element for the finalScore
+     * @param student the input student
+     * @return true if the course doesn't have the student already
+     */
+    public boolean registerStudent(Student student) {
+        if (registeredStudents.contains(student)) {
+            return false;
+        }
+        
+        registeredStudents.add(student);
+        for (Assignment assignment : assignments) {
+            assignment.getScores().add(null);
+        }
+
+        finalScores.add(null);
+        return true;
+    }
+
+
 }
