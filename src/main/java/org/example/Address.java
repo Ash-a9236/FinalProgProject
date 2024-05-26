@@ -40,18 +40,62 @@ public class Address {
      */
     public static boolean isPostalCodeValid(String postalCode) {
         postalCode.toLowerCase();
+        boolean isValid = false;
 
-       /* if (postalCode.length() == 6) {
-            for (int i = 0; i < postalCode.length(); i++) {
-                if (postalCode.charAt(i) % 2 == 0) {
+        if (postalCode == null) {
+            isValid = false;
+        } else if (postalCode.length() < 6 || postalCode.length() >7)) {
+            isValid = false;
+        }
 
-                }
-            }
+       
+
+        return isValid;
+    }
+
+    /*
+
+    /**
+     * Formats a postal code to be CDCDCD if it has a length of 6
+     * @param postalCode the input string
+     * @return the postal code in CDCDCD format
+     */
+  /*  public static boolean isValid6(String postalCode) {
+        return Character.isLetter(postalCode.charAt(0)) &&
+                Character.isDigit(postalCode.charAt(1)) &&
+                Character.isLetter(postalCode.charAt(2)) &&
+                Character.isDigit(postalCode.charAt(3)) &&
+                Character.isLetter(postalCode.charAt(4)) &&
+                Character.isDigit(postalCode.charAt(5));
+    }
+
+    /**
+     * Formats a postal code to be CDC DCD if it has a length of 7
+     * @param postalCode the input string
+     * @return the postal code in CDC DCD format
+     */
+  /*  public static boolean isValid7(String postalCode) {
+        return Character.isLetter(postalCode.charAt(0)) &&
+                Character.isDigit(postalCode.charAt(1)) &&
+                Character.isLetter(postalCode.charAt(2)) &&
+                postalCode.charAt(3) == ' ' &&
+                Character.isDigit(postalCode.charAt(4)) &&
+                Character.isLetter(postalCode.charAt(5)) &&
+                Character.isDigit(postalCode.charAt(6));
+    }
+/*
+    /**
+     * Checks if a postal code is valid or not and formats it according to its length
+     * @param postalCode the input string
+     * @return the postal code in the correct format
+     */
+  /*  public static boolean isPostalCodeValid(String postalCode) {
+        if (postalCode.length() == 6) {
+            return isValid6(postalCode);
         } else if (postalCode.length() == 7) {
-
-        } else {
-            return false;
-        }*/
+            return isValid7(postalCode);
+        }
         return false;
     }
+     */
 }
