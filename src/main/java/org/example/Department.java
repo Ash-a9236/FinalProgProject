@@ -23,7 +23,7 @@ public class Department {
 
     /**
      * checks if a department name is valid or not, if the department name only contain letters or space
-     * @param departmentName
+     * @param departmentName the input department name
      * @return if the department is valid or not
      */
     public static boolean validateDepartmentName(String departmentName) {
