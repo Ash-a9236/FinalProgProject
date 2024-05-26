@@ -111,7 +111,6 @@ public class Course {
             double weightedSum = 0.0;
             int totalWeight = 0;
 
-
             for (int j = 0; j < assignments.size(); j++) {
                 Assignment assignment = assignments.get(j);
                 Integer score = assignment.getScores().get(i);
@@ -126,7 +125,6 @@ public class Course {
                 studentsAverage[i] = (int) Math.round(weightedSum / totalWeight);
             } else {
                 studentsAverage[i] = 0;
-
             }
         }
 
@@ -171,24 +169,23 @@ public class Course {
 
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Course ID: ").append(courseId).append("\n");
-        sb.append("Course Name: ").append(courseName).append("\n");
-        sb.append("Credits: ").append(credits).append("\n");
-        sb.append("Department: ").append(department.getDepartmentName()).append("\n");
+        sb.append("Course ID : ").append(courseId).append("\n");
+        sb.append("Course Name : ").append(courseName).append("\n");
+        sb.append("Credits : ").append(credits).append("\n");
+        sb.append("Department : ").append(department.getDepartmentName()).append("\n");
 
-        sb.append("Assignments:\n");
+        sb.append("Assignments :\n");
         for (Assignment assignment : assignments) {
-            sb.append("\t").append(assignment.getAssignmentName()).append(", Weight: ").append(assignment.getWeight()).append("\n");
+            sb.append("\t").append(assignment.getAssignmentName()).append(", Weight : ").append(assignment.getWeight()).append("\n");
         }
 
-        sb.append("Registered Students:\n");
+        sb.append("Registered Students :\n");
         for (Student student : registeredStudents) {
-            sb.append("\tStudent ID: ").append(student.getStudentId()).append(", Student Name: ")
-                    .append(student.getStudentName()).append(", Department: ")
+            sb.append("\tStudent ID : ").append(student.getStudentId()).append(", Student Name : ")
+                    .append(student.getStudentName()).append(", Department : ")
                     .append(student.getDepartment().getDepartmentName()).append("\n");
         }
 
         return sb.toString();
     }
-
 }
