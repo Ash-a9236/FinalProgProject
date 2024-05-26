@@ -89,7 +89,7 @@ public class Course {
         if (registeredStudents.contains(student)) {
             return false;
         }
-        
+
         registeredStudents.add(student);
         for (Assignment assignment : assignments) {
             assignment.getScores().add(null);
@@ -99,5 +99,96 @@ public class Course {
         return true;
     }
 
+    /**
+     * Calculates the weighted average score of a student
+     * @return the weighted average score the student
+     */
+    public int[] calcStudentsAverage() {
+        int[] studentsAverage = new int[registeredStudents.size()];
+
+        for (int i = 0; i < registeredStudents.size(); i++) {
+            Student student = registeredStudents.get(i);
+            double weightedSum = 0.0;
+            int totalWeight = 0;
+
+
+            for (int j = 0; j < assignments.size(); j++) {
+                Assignment assignment = assignments.get(j);
+                Integer score = assignment.getScores().get(i);
+
+                if (score != null) {
+                    weightedSum += (double) score * assignment.getWeight();
+                    totalWeight += assignment.getWeight();
+                }
+            }
+
+            if (totalWeight > 0) {
+                studentsAverage[i] = (int) Math.round(weightedSum / totalWeight);
+            } else {
+                studentsAverage[i] = 0;
+
+            }
+        }
+
+        return studentsAverage;
+    }
+
+    /**
+     * Adds a new assignment to the course
+     * @param assignmentName the input string
+     * @param weight the input double
+     * @param maxScore the input int
+     * @return true if the assignment has been added
+     */
+    public boolean addAssignment(String assignmentName, double weight, int maxScore) {
+        Assignment newAssignment = new Assignment(assignmentName, weight, maxScore);
+        assignments.add(newAssignment);
+
+        for (int i = 0; i < registeredStudents.size(); i++) {
+            newAssignment.getScores().add(null);
+        }
+
+        return true;
+    }
+
+    /**
+     * Generates random scores for each assignment and student, and calculates the final score for each student
+     */
+    public void generateScores() {
+
+    }
+
+    public void setCourseName(String courseName) {
+        this.courseName = Util.toTitleCase(courseName);
+    }
+
+    public String toSimplifiedString1() {
+        return "CourseId: " + courseId +
+                ", Course Name: " + courseName +
+                ", Credits: " + credits +
+                ", Department: " + department.getDepartmentName();
+    }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Course ID: ").append(courseId).append("\n");
+        sb.append("Course Name: ").append(courseName).append("\n");
+        sb.append("Credits: ").append(credits).append("\n");
+        sb.append("Department: ").append(department.getDepartmentName()).append("\n");
+
+        sb.append("Assignments:\n");
+        for (Assignment assignment : assignments) {
+            sb.append("\t").append(assignment.getAssignmentName()).append(", Weight: ").append(assignment.getWeight()).append("\n");
+        }
+
+        sb.append("Registered Students:\n");
+        for (Student student : registeredStudents) {
+            sb.append("\tStudent ID: ").append(student.getStudentId()).append(", Student Name: ")
+                    .append(student.getStudentName()).append(", Department: ")
+                    .append(student.getDepartment().getDepartmentName()).append("\n");
+        }
+
+        return sb.toString();
+    }
 
 }
