@@ -91,47 +91,66 @@ course equals to `1 (100%)`
 2. `boolean registerStudent(Student student)`
 // adds a student to the student list of the course, also add a
 new `null` element to each assignment of this course, and add a new `null` element for the `finalScores`.
+*/
 
-//    /**
-//     * adds a student to the student list of the course, and adds a new null element to each assignment of this course,
-//     * and add a new null element for the finalScore
-//     * @param student the input student
-//     * @return true if the course doesn't have the student already
-//     */
-//    public boolean registerStudent(Student student) {
-//        if (registeredStudents.contains(student)) {
-//            return false;
-//        }
-//
-//        registeredStudents.add(student);
-//        for (Assignment assignment : assignments) {
-//            assignment.getScores().add(null);
-//        }
-//
-//        finalScores.add(null);
-//        return true;
-//    }
-// */
-//
-//    public boolean registerStudent(Student student) {
-//        if (registeredStudents.contains(student)) {
-//            return false;
-//        }
-//
-//        registeredStudents.add(student);
-//        for (Assignment assignment : assignments) {
-//            assignment.getScores().add(null);
-//        }
-//
-//        finalScores.add(null);
-//        return true;
-//    }
+    /**
+     * adds a student to the student list of the course, and adds a new null element to each assignment of this course,
+     * and add a new null element for the finalScore
+     * @param student the input student
+     * @return true if the course doesn't have the student already
+     */
+    public boolean registerStudent(Student student) {
+        if (registeredStudents.contains(student)) {
+            return false;
+        }
+
+        registeredStudents.add(student);
+        for (Assignment assignment : assignments) {
+            assignment.getScores().add(null);
+        }
+
+        finalScores.add(null);
+        return true;
+    }
 
 /*______________________________________________________________________________________________________________________
 3. `int[] calcStudentsAverage()` // calculates the weighted average score of a student.
- */
+*/
+    /**
+     * Calculates the weighted average score of a student
+     * @return the weighted average score the student
+     */
+    public int[] calcStudentsAverage() {
+        if (registeredStudents.isEmpty() || registeredStudents == null) {
+            int[] studentsAverage = {0};
+        }
 
+        int[] studentsAverage = new int[registeredStudents.size()];
 
+        for (int i = 0; i < registeredStudents.size(); i++) {
+            Student student = registeredStudents.get(i);
+            double weightedSum = 0.0;
+            double totalWeight = 0.0;
+
+            for (int j= 0; j < assignments.size(); j++) {
+                Assignment assignment = assignments.get(j);
+                Integer score = assignment.getScores().get(i);
+
+                if (score != null) {
+                    weightedSum += (double) score * assignment.getWeight();
+                    totalWeight += assignment.getWeight();
+                }
+            }
+
+            if (totalWeight > 0) {
+                studentsAverage[i] = (int) Math.round(weightedSum / totalWeight);
+            } else {
+                studentsAverage[i] = 0;
+            }
+        }
+
+        return studentsAverage;
+    }
 
 
 
