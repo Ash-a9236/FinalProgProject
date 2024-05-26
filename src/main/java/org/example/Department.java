@@ -16,10 +16,29 @@ department name should only contain letters or space
 5. getter
 6. setter
  */
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@EqualsAndHashCode
+@ToString
+@Getter
+@Setter
 public class Department {
     private String departmentId;
     private String departmentName;
-    private static int nextId;
+    private static int nextId = 1;
+
+    public Department(String departmentName) {
+        if (validateDepartmentName(departmentName)) {
+            this.departmentId = "D" + nextId++;
+            this.departmentName = departmentName;
+        } else {
+            this.departmentId = null;
+            this.departmentName = null;
+        }
+    }
 
     /**
      * checks if a department name is valid or not, if the department name only contain letters or space
@@ -27,15 +46,11 @@ public class Department {
      * @return if the department is valid or not
      */
     public static boolean validateDepartmentName(String departmentName) {
-        boolean isValid = false;
 
         if (departmentName == null || departmentName.isEmpty()) {
-            return isValid;
+            return false;
         }
 
-        if (departmentName.matches("[a-zA-Z_0-9]")) {
-            isValid = true;
-        }
-        return isValid;
+        return departmentName.matches("[a-zA-Z_0-9]");
     }
 }
