@@ -42,4 +42,20 @@ public class Assignment {
 
     public Assignment(String assignmentName, double weight, int maxScore) {
     }
+
+    /**
+     * calculates the average score for an assignment
+     * @param scores the input scores for the assignments
+     */
+    public void calcAssignmentAvg(ArrayList<Integer> scores) {
+        if (scores == null || scores.isEmpty()) {
+            System.out.println("null");
+        }
+
+        int sum = 0;
+        for (int score : scores) {
+            sum += score;
+        }
+        System.out.println(sum/scores.size());
+    }
 }
