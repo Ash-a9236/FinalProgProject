@@ -116,7 +116,11 @@ public class Course {
      * @return the weighted average score the student
      */
     public int[] calcStudentsAverage() {
-        int[] studentsAverage = new int[registeredStudents.size()];
+        if (registeredStudents.size() == 0 || registeredStudents == null) {
+            int[] studentsAverage = {0};
+        } else {
+            int[] studentsAverage = new int[registeredStudents.size()];
+        }
 
         for (int i = 0; i < registeredStudents.size(); i++) {
             Student student = registeredStudents.get(i);
