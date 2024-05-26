@@ -48,6 +48,8 @@ the `departmentName` the `assignments`, and the `registeredStudents` (only the `
 the `studentName` and the `departmentName`)
 */
 import java.util.ArrayList;
+import java.util.Random;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -65,6 +67,16 @@ public class Course {
     private ArrayList<Student> registeredStudents;
     private ArrayList<Double> finalScores;
     private static int nextId = 1;
+
+    public Course(String departmentId, String courseName, double credits, Department department) {
+        this.courseId = "C-" + departmentId + "-" + courseId;
+        this.courseName = courseName;
+        this.credits = credits;
+        this.department = department;
+        this.assignments = new ArrayList<>();
+        this.registeredStudents = new ArrayList<>();
+        this.finalScores = new ArrayList<>();
+    }
 
     /**
      * checks if the sum of weights of all assignments of that course equals to 1 (100%)
@@ -153,18 +165,68 @@ public class Course {
      * Generates random scores for each assignment and student, and calculates the final score for each student
      */
     public void generateScores() {
+        Random rand = new Random();
+
+        for (Course course : registeredCourses) {
+            double[]
+        }
+
+        /*
+         public void generateScores() {
+        Random random = new Random();
+        for (Course course : registeredCourses) {
+            double[] assignmentScores = new double[course.getNumAssignments()];
+            // Generate random scores for each assignment
+            for (int i = 0; i < assignmentScores.length; i++) {
+                assignmentScores[i] = random.nextDouble() * 100; // Random score between 0 and 100
+            }
+            // Set scores for the student in the course
+            course.setScoresForStudent(this, assignmentScores);
+        }
+        // Calculate final score for each student
+        for (Course course : registeredCourses) {
+            double finalScore = course.calculateFinalScoreForStudent(this);
+            System.out.println("Final score for " + studentName + " in " + course.getCourseName() + ": " + finalScore);
+        }
+    }
+         */
 
     }
+/*
 
+5. `void generateScores()` // generates random scores for each assignment and student, and calculates the final score
+for each student.
+
+6. `void displayScores()` // displays the scores of a course in a table, with the assignment averages and
+student weighted average
+
+    ``` data
+      example:
+      Course: Programming 1(C-D00-01)
+                        Assignment01   Assignment02   Assignment03         Exam01         Exam02    Final Score
+              Yi Wang             82             82             76             85             80             82
+              Yi Wang             97             92             84             67             90             83
+              Yi Wang             91             68             82             83             83             82
+
+              Average             90             81             81             78             84
+    ```
+
+7. `String toSimplifiedString()` // converts a course to a simple string with only the `courseId`,
+`courseName`, `credits`, and `departmentName`.
+
+8. `String toString()` // converts a course to a string that contains the `courseId`, the `courseName`, the credits,
+the `departmentName` the `assignments`, and the `registeredStudents` (only the `studentId`,
+the `studentName` and the `departmentName`)
+ */
     public void setCourseName(String courseName) {
         this.courseName = Util.toTitleCase(courseName);
     }
 
     public String toSimplifiedString1() {
-        return "CourseId: " + courseId +
-                ", Course Name: " + courseName +
-                ", Credits: " + credits +
-                ", Department: " + department.getDepartmentName();
+        return String.format("Course ID : " + + courseId +
+                "\nCourse Name : " + courseName +
+                "\nCredits : " + credits +
+                "\nDepartment : " + department.getDepartmentName());
     }
 
     public String toString() {
@@ -176,7 +238,8 @@ public class Course {
 
         sb.append("Assignments :\n");
         for (Assignment assignment : assignments) {
-            sb.append("\t").append(assignment.getAssignmentName()).append(", Weight : ").append(assignment.getWeight()).append("\n");
+            sb.append("\t").append(assignment.getAssignmentName()).append(", Weight : ")
+                    .append(assignment.getWeight()).append("\n");
         }
 
         sb.append("Registered Students :\n");
