@@ -406,4 +406,12 @@ the `studentName` and the `departmentName`)
 
 //
 
+
+    public ArrayList<Student> getRegisteredStudents() {
+        return registeredStudents;
+    }
+
+    public ArrayList<Assignment> getAssignments() {
+        return assignments;
+    }
 }
