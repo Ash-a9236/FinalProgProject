@@ -169,12 +169,32 @@ public class Course {
      * Generates random scores for each assignment and student, and calculates the final score for each student
      */
     public void generateScores() {
-        Random rand = new Random();
+        Random random = new Random();
 
-        for (Course course : registeredCourses) {
-            double[]
+        for (Assignment assignment : assignments) {
+            for (int i = 0; i < registeredStudents.size(); i++) {
+                double score = random.nextDouble() * assignment.getMaxScore();
+                assignment.getScores().set(i, score);
+            }
         }
+        calculateFinalScores();
+    }
 
+    /**
+     * calculates the final score of a student
+     */
+    private void calculateFinalScores() {
+        for (int i = 0; i < registeredStudents.size(); i++) {
+            double totalWeightedScore = 0;
+            for (Assignment assignment : assignments) {
+                Double score = assignment.getScores().get(i);
+                if (score != null) {
+                    totalWeightedScore += score * assignment.getWeight();
+                }
+            }
+            finalScores[i] = totalWeightedScore;
+        }
+    }
         /*
          public void generateScores() {
         Random random = new Random();
@@ -197,6 +217,52 @@ public class Course {
 
     }
 /*
+  public void generateScores() {
+        Random random = new Random();
+        for (Assignment assignment : assignments) {
+            for (int i = 0; i < registeredStudents.size(); i++) {
+                double score = random.nextDouble() * assignment.getMaxScore();
+                assignment.getScores().set(i, score);
+            }
+        }
+        calculateFinalScores();
+    }
+
+    private void calculateFinalScores() {
+        for (int i = 0; i < registeredStudents.size(); i++) {
+            double totalWeightedScore = 0;
+            for (Assignment assignment : assignments) {
+                Double score = assignment.getScores().get(i);
+                if (score != null) {
+                    totalWeightedScore += score * assignment.getWeight();
+                }
+            }
+            finalScores[i] = totalWeightedScore;
+        }
+    }
+
+    public void displayScores() {
+        System.out.println("Course: " + courseName + "(" + courseId + ")");
+        System.out.printf("%-20s", " ");
+        for (Assignment assignment : assignments) {
+            System.out.printf("%-15s", assignment.getAssignmentName());
+        }
+        System.out.println("Final Score");
+        for (int i = 0; i < registeredStudents.size(); i++) {
+            Student student = registeredStudents.get(i);
+            System.out.printf("%-20s", student.getStudentName());
+            for (Assignment assignment : assignments) {
+                Double score = assignment.getScores().get(i);
+                System.out.printf("%-15s", score != null ? score : "null");
+            }
+            System.out.printf("%-15s%n", finalScores[i]);
+        }
+        System.out.printf("%-20s", "Average");
+        for (Assignment assignment : assignments) {
+            System.out.printf("%-15s", assignment.calculateAverageScore());
+        }
+        System.out.println();
+    }
 
 5. `void generateScores()` // generates random scores for each assignment and student, and calculates the final score
 for each student.
