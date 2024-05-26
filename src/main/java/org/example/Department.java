@@ -27,14 +27,15 @@ public class Department {
      * @return if the department is valid or not
      */
     public static boolean validateDepartmentName(String departmentName) {
-//        for (int i = 0; i < departmentName.length(); i++) {
-//            char c = departmentName.charAt(i);
-//            if (c <= 0 || c > 0) {
-//                return false;
-//            } else {
-//                i++;
-//            }
-//        }
-        return true;
+        boolean isValid = false;
+
+        if (departmentName == null || departmentName.isEmpty()) {
+            return isValid;
+        }
+
+        if (departmentName.matches("[a-zA-Z_0-9]")) {
+            isValid = true;
+        }
+        return isValid;
     }
 }

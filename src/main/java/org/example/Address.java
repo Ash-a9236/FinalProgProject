@@ -43,12 +43,11 @@ public class Address {
      * format CDC DCD
      */
     public static boolean isPostalCodeValid(String postalCode) {
-        postalCode.toLowerCase();
         boolean isValid = false;
 
         if (postalCode == null) {
             return isValid;
-        } else if (postalCode.length() < 6 || postalCode.length() >7)) {
+        } else if (postalCode.length() < 6 || postalCode.length() >7) {
             return isValid;
         }
 
