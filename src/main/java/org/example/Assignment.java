@@ -26,5 +26,12 @@ generated with the following rule: Firstly generate a random number in range `[0
    weight and maxScore
  */
 public class Assignment {
+    private String assignmentId;
+    private String assignmentName;
+    private double weight;
+    private int maxScore;
+    private double assignmentAverage;
+    private int[] scores;
+    private static int nextId;
 
 }
