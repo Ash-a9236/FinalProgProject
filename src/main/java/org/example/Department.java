@@ -27,7 +27,7 @@ import lombok.ToString;
 @Setter
 public class Department {
     private String departmentId;
-    private String departmentName;
+    @Getter private String departmentName;
     private static int nextId = 1;
 
     public Department(String departmentName) {

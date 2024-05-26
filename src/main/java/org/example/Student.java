@@ -36,6 +36,17 @@ the `gender`, the `address` and the `department`, and the `registeredCourses`
 7. getters
 8. setters
  */
+
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+import java.util.ArrayList;
+
+@EqualsAndHashCode
+@Getter
+@Setter
 public class Student {
     private String studentId;
     private String studentName;
@@ -43,5 +54,24 @@ public class Student {
     private Address address;
     private Department department;
     private Course[] registeredCourses;
-    private static int nextId;
+    private static int nextId = 1;
+
+    public Student(String studentId, String studentName, Gender gender, Address address, Department department,
+                   Course[] registeredCourses) {
+        this.studentId = "S" + nextId++;
+        this.studentName = studentName;
+        this.gender = gender;
+        this.address = address;
+        this.department = department;
+        this.registeredCourses = new Course[];
+    }
+
+    /*
+    1. `boolean registerCourse(Course course)` // registers a course, this method
+    (1) adds the course to the student's registeredCourses list,
+    (2) adds the student to the course's registeredStudents list,
+    (3) appends a `null` for the `scores` of each assignment of the course. If the course is already registered,
+    directly returns `false`
+     */
+
 }
