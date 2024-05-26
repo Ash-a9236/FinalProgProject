@@ -68,6 +68,17 @@ public class Course {
     private ArrayList<Double> finalScores;
     private static int nextId = 1;
 
+
+    public Course(String departmentId, String courseName, double credits, Department department) {
+        this.courseId = "C-" + departmentId + "-" + courseId;
+        this.courseName = courseName;
+        this.credits = credits;
+        this.department = department;
+        this.assignments = new ArrayList<>();
+        this.registeredStudents = new ArrayList<>();
+        this.finalScores = new ArrayList<>();
+    }
+
 /*______________________________________________________________________________________________________________________
 1. `boolean isAssignmentWeightValid()` // checks if the sum of weights of all assignments of that
 course equals to `1 (100%)`
@@ -152,8 +163,6 @@ new `null` element to each assignment of this course, and add a new `null` eleme
         return studentsAverage;
     }
 
-
-
 /*______________________________________________________________________________________________________________________
 4. `boolean addAssignment(String assignmentName, double weight, int maxScore)` // adds a new assignment to the course
 */
@@ -229,16 +238,7 @@ the `studentName` and the `departmentName`)
 
 
 
-//
-//    public Course(String departmentId, String courseName, double credits, Department department) {
-//        this.courseId = "C-" + departmentId + "-" + courseId;
-//        this.courseName = courseName;
-//        this.credits = credits;
-//        this.department = department;
-//        this.assignments = new ArrayList<>();
-//        this.registeredStudents = new ArrayList<>();
-//        this.finalScores = new ArrayList<>();
-//    }
+
 //
 //    /**
 //     * checks if the sum of weights of all assignments of that course equals to 1 (100%)
