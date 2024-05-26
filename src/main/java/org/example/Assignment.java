@@ -25,13 +25,21 @@ generated with the following rule: Firstly generate a random number in range `[0
    1. `toString` // generates a string to represent an assignment, with assignmentId, assignmentName,
    weight and maxScore
  */
+import lombok.Getter;
+
+import java.util.ArrayList;
 public class Assignment {
     private String assignmentId;
+    @Getter
     private String assignmentName;
+    @Getter
     private double weight;
     private int maxScore;
     private double assignmentAverage;
-    private int[] scores;
-    private static int nextId;
+    @Getter
+    private ArrayList<Integer> scores;
+    private static int nextId = 1;
 
+    public Assignment(String assignmentName, double weight, int maxScore) {
+    }
 }
