@@ -61,6 +61,9 @@ public class Assignment {
         System.out.println(sum/scores.size());
     }
 
+    /**
+     * generates random scores for all students in an assignment
+     */
     public void generateRandomScore() {
         Random rand = new Random();
         int randomNumber = rand.nextInt(0,11);
