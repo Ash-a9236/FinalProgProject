@@ -30,17 +30,14 @@ import lombok.Getter;
 import java.util.ArrayList;
 import java.util.Random;
 
-
+@Getter
 public class Assignment {
     private String assignmentId;
-    @Getter
-    private String assignmentName;
-    @Getter
-    private double weight;
+    @Getter private String assignmentName;
+    @Getter private double weight;
     private int maxScore;
     private double assignmentAverage;
-    @Getter
-    private ArrayList<Integer> scores;
+    @Getter private ArrayList<Integer> scores;
     private static int nextId = 1;
 
     public Assignment(String assignmentName, double weight, int maxScore) {
@@ -89,5 +86,9 @@ public class Assignment {
                 "\nAssignment Name : " + assignmentName +
                 "\nWeight : " + weight +
                 "\nMax Score : " + maxScore);
+    }
+
+    public double getWeight() {
+        return weight;
     }
 }
