@@ -46,12 +46,8 @@ student weighted average
 8. `String toString()` // converts a course to a string that contains the `courseId`, the `courseName`, the credits,
 the `departmentName` the `assignments`, and the `registeredStudents` (only the `studentId`,
 the `studentName` and the `departmentName`)
-
-9. equals
-10. getter
-11. setter
- */
-
+*/
+import java.util.ArrayList;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -64,8 +60,23 @@ public class Course {
     private String courseName;
     private double credits;
     private Department department;
-    private Assignment[] assignments;
-    private Student[] registeredStudents;
-    private double[] finalScores;
-    private static int nextId;
+    private ArrayList<Assignment> assignments;
+    @Getter
+    private ArrayList<Student> registeredStudents;
+    private ArrayList<Double> finalScores;
+    private static int nextId = 1;
+
+    /**
+     * checks if the sum of weights of all assignments of that course equals to 1 (100%)
+     * @return if the sum is valid or not (if it is equal to 100%)
+     */
+    public boolean isAssignmentWeightValid() {
+        double sum = 0.0;
+        for (Assignment assignment : assignments) {
+            sum+= assignment.getWeight();
+        }
+
+        return Math.abs(sum - 1.0) < 0.001;
+    }
+
 }
