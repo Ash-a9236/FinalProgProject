@@ -51,6 +51,14 @@ the `studentName` and the `departmentName`)
 10. getter
 11. setter
  */
+
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+
+@EqualsAndHashCode
+@Getter
+@Setter
 public class Course {
     private String courseId;
     private String courseName;

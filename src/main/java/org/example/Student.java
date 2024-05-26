@@ -53,18 +53,20 @@ public class Student {
     private Gender gender;
     private Address address;
     private Department department;
-    private Course[] registeredCourses;
+    private ArrayList<Course> registeredCourses;
     private static int nextId = 1;
 
     public Student(String studentId, String studentName, Gender gender, Address address, Department department,
-                   Course[] registeredCourses) {
+                   ArrayList<Course> registeredCourses) {
         this.studentId = "S" + nextId++;
         this.studentName = studentName;
         this.gender = gender;
         this.address = address;
         this.department = department;
-        this.registeredCourses = new Course[];
+        this.registeredCourses = new ArrayList<>();
     }
+
+
 
     /*
     1. `boolean registerCourse(Course course)` // registers a course, this method
@@ -72,6 +74,36 @@ public class Student {
     (2) adds the student to the course's registeredStudents list,
     (3) appends a `null` for the `scores` of each assignment of the course. If the course is already registered,
     directly returns `false`
+
+
+     public boolean registerCourse(Course course) {
+        if (registeredCourses.contains(course)) {
+            return false;
+        }
+        registeredCourses.add(course);
+        course.getRegisteredStudents().add(this);
+
+        for (Assignment assignment : course.getAssignments()) {
+            assignment.getScores().add(null);
+        }
+
+        return true;
+    }
      */
+
+//    public boolean registerCourse(Course course) {
+//        if (registeredCourses.contains(course)) {
+//            return false;
+//        }
+//
+//        registeredCourses.add(course);
+//        course.getRegisteredStudents().add(this);
+//
+//        for (Assignment assignment : course.getAssignments()) {
+//            assignment.getScores().add(null);
+//        }
+//
+//        return true;
+//    }
 
 }
