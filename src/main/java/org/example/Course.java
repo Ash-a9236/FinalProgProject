@@ -258,6 +258,38 @@ for each student.
     Average             90             81             81             78             84
             ```
 */
+    public void displayScores() {
+        System.out.println("Course : " + courseName + " (" + courseId + ")");
+
+        // Print course information
+        System.out.println("Course: " + courseName + "(" + courseId + ")");
+
+        // Print assignment headers
+        System.out.printf("%-20s", "");
+        for (Assignment assignment : assignments) {
+            System.out.printf("%-15s", assignment.getAssignmentName());
+        }
+        System.out.printf("%-15s%n", "Final Score");
+
+        // Print student scores
+        for (int i = 0; i < registeredStudents.size(); i++) {
+            Student student = registeredStudents.get(i);
+            System.out.printf("%-20s", student.getStudentName());
+            for (Assignment assignment : assignments) {
+                int score = assignment.getScores().get(i);
+                System.out.printf("%-15s", (score != null) ? score : "null");
+            }
+            System.out.printf("%-15s%n", finalScores.get(i).intValue());
+        }
+
+        // Print assignment averages
+        System.out.printf("%-20s", "Average");
+        for (Assignment assignment : assignments) {
+            System.out.printf("%-15s", Math.round(assignment.calculateAverageScore()));
+        }
+        System.out.println();
+
+    }
 
 /*______________________________________________________________________________________________________________________
 7. `String toSimplifiedString()` // converts a course to a simple string with only the `courseId`, `courseName`,
