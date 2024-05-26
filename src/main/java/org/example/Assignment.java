@@ -28,6 +28,7 @@ generated with the following rule: Firstly generate a random number in range `[0
 import lombok.Getter;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Random;
 
 @Getter
@@ -90,5 +91,9 @@ public class Assignment {
 
     public double getWeight() {
         return weight;
+    }
+
+    public ArrayList<Integer> getScores() {
+        return scores;
     }
 }
