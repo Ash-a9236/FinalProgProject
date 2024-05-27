@@ -1,37 +1,18 @@
 package org.example;
-/*
-- Fields
 
-1. `String assignmentId`
-2. `String assignmentName`
-3. `double weight`
-4. `int maxScore`
-5. `double assignmentAverage`
-6. `int[]/ArrayList<Integer> scores`
-7. `static int nextId`
-
-- Methods
-
-1. `void calcAssignmentAvg()` // calculates the average score for one assignment
-2. `void generateRandomScore()` // generates random scores for all students in an assignment, the scores are
-generated with the following rule: Firstly generate a random number in range `[0, 10]`, then
-
-   - if the number is `0`, then generate a random score in range `[0, 60)` for the student
-   - if the number is `1`, `2`, then generate a random score in range `[60, 70)` for the student
-   - if the number is `3`, `4`, then generate a random score in range `[70, 80)` for the student
-   - if the number is `5`, `6`, `7`, `8`, then generate a random score in range `[80, 90)` for the student
-   - if the number is `9`, `10`, then generate a random score in range `[90, 100]` for the student
-
-   1. `toString` // generates a string to represent an assignment, with assignmentId, assignmentName,
-   weight and maxScore
- */
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Random;
 
+@ToString
+@EqualsAndHashCode
 @Getter
+@Setter
 public class Assignment {
     private String assignmentId;
     @Getter private String assignmentName;
@@ -41,23 +22,27 @@ public class Assignment {
     @Getter private ArrayList<Integer> scores;
     private static int nextId = 1;
 
-    public Assignment(String assignmentName, double weight, int maxScore) {
+    public Assignment(String assignmentName, double weight, int maxScore, int studentAmount) {
+        this.assignmentId = String.format("%02d", nextId++);
+        this.assignmentName = Util.toTitleCase(assignmentName);
+        this.weight = weight;
+        this.maxScore = maxScore;
+
+        this.scores = new ArrayList<>();
+        for (int i = 0; i < studentAmount; i++) {
+            scores.add(null);
+        }
     }
 
     /**
      * calculates the average score for an assignment
-     * @param scores the input scores for the assignments
      */
-    public void calcAssignmentAvg(ArrayList<Integer> scores) {
-        if (scores == null || scores.isEmpty()) {
-            System.out.println("null");
-        }
-
-        int sum = 0;
+    public void calcAssignmentAvg() {
+        double avg = 0;
         for (int score : scores) {
-            sum += score;
+            avg += score;
         }
-        System.out.println(sum/scores.size());
+        assignmentAverage = avg / scores.size();
     }
 
     /**
@@ -65,47 +50,36 @@ public class Assignment {
      */
     public void generateRandomScore() {
         Random rand = new Random();
-        int randomNumber = rand.nextInt(0,11);
 
-        if (randomNumber == 0) {
-            randomNumber = rand.nextInt(0,60);
-        } else if (randomNumber == 1 || randomNumber == 2) {
-            randomNumber = rand.nextInt(60,70);
-        } else if (randomNumber == 3 || randomNumber == 4) {
-            randomNumber = rand.nextInt(70,80);
-        } else if (randomNumber == 5 || randomNumber == 6 || randomNumber == 7 || randomNumber == 8) {
-            randomNumber = rand.nextInt(80,90);
-        } else if (randomNumber == 9 || randomNumber == 10) {
-            randomNumber = rand.nextInt(90,101);
+        for (int i = 0; i < scores.size(); i++) {
+            int randNum = rand.nextInt(0, 11);
+
+            int randScore = switch (randNum) {
+                case 0 -> rand.nextInt(0, 61);
+                case 1, 2 -> rand.nextInt(60, 71);
+                case 3, 4 -> rand.nextInt(70, 81);
+                case 5, 6, 7, 8 -> rand.nextInt(80, 91);
+                case 9, 10 -> rand.nextInt(90, 101);
+                default -> 0;
+            };
+            scores.set(i, randScore);
         }
-    }
-
-    @Override
-    public String toString() {
-        return String.format("Assignment : " +
-                "\nAssignment ID : " + assignmentId +
-                "\nAssignment Name : " + assignmentName +
-                "\nWeight : " + weight +
-                "\nMax Score : " + maxScore);
+        calcAssignmentAvg();
     }
 
     public double getWeight() {
-        return weight;
     }
 
-    public ArrayList<Integer> getScores() {
-        return scores;
+    public Calendar getScores() {
     }
 
-    public int getMaxScore() {
-        return maxScore;
+    public Object getAssignmentName() {
     }
 
-    public String getAssignmentName() {
-        return assignmentName;
+    public double getMaxScore() {
     }
 
-    public String getAssignmentId() {
-        return assignmentId;
+    public double getAssignmentAverage() {
+        return assignmentAverage;
     }
 }

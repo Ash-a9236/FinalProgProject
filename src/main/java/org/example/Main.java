@@ -1,21 +1,21 @@
 package org.example;
-/*
-## Unit Testing
 
-The following methods requires unit testing:
-
-1. `Address`
-   1. `isPostalCodeValid`
-2. `Assignment`
-   1. `calcAssignmentAvg` // you will need to create object of an assignment, then use setter to change the scores of it, instead of using the random generated scores.
-   2. `isAssignmentsTotalWeightValid`
-3. `Course`
-   1. `calcStudentAvg`
-4. `Util`
-   1. `toTitleCase`
- */
 public class Main {
     public static void main(String[] args) {
+        Course chemistry = new Course("Sciences", "Chemistry 101", 3,
+                new Department("Sciences"));
+        Course history = new Course("History", "History 101", 2,
+                new Department("Sociology"));
+
+        chemistry.addAssignment("Fireworks", 3.0, 100);
+        chemistry.addAssignment("Fire", 1.0, 100);
+        history.addAssignment("Ancient Egypt", 2.5, 100);
+
+//        Student Emily = new Student("AB002", "Emily", Gender.FEMALE, new Address(5,
+//                "-", "-", "-", "h3x3r7", "-"), "Sciences");
+//        Student Jarry = new Student("AB001", "Jarry", Gender.MALE, new Address(5,
+//                "-", "-", "-", "h3x3r7", "-"), "History");
+//        System.out.println(Emily);
 
     }
 }
