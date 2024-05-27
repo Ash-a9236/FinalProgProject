@@ -19,6 +19,10 @@ public class Util {
      */
     public static String toTitleCase(String strIn) {
         int spaceIdx = strIn.indexOf(' ');
+        String strOut = "";
+        if (strIn == "") {
+            return strOut = "null";
+        }
 
         String fWord = strIn.substring(0, spaceIdx);
         String capLetter = fWord.substring(0, 1).toUpperCase();
@@ -30,7 +34,7 @@ public class Util {
         String restLetter2 = lWord.substring(1).toLowerCase();
         lWord = capLetter2 + restLetter2;
 
-        String strOut = fWord + " " + lWord;
+        strOut = fWord + " " + lWord;
         return strOut;
     }
 }
