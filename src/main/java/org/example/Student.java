@@ -40,7 +40,6 @@ the `gender`, the `address` and the `department`, and the `registeredCourses`
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 import java.util.ArrayList;
 
@@ -169,7 +168,7 @@ ________________________________________________________________________________
         return studentId;
     }
 
-    public org.example.Department getDepartment() {
+    public Object getDepartment() {
         return department;
     }
 }

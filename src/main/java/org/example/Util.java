@@ -29,6 +29,8 @@ public class Util {
         String capLetter2 = lWord.substring(0, 1).toUpperCase();
         String restLetter2 = lWord.substring(1).toLowerCase();
         lWord = capLetter2 + restLetter2;
-        return fWord + " " + lWord;
+
+        String strOut = fWord + " " + lWord;
+        return strOut;
     }
 }

@@ -83,7 +83,7 @@ public class Assignment {
     @Override
     public String toString() {
         return String.format("Assignment : " +
-                "\nAssignment Id : " + assignmentId +
+                "\nAssignment ID : " + assignmentId +
                 "\nAssignment Name : " + assignmentName +
                 "\nWeight : " + weight +
                 "\nMax Score : " + maxScore);
