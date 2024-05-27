@@ -47,6 +47,7 @@ student weighted average
 the `departmentName` the `assignments`, and the `registeredStudents` (only the `studentId`,
 the `studentName` and the `departmentName`)
 */
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -219,7 +220,7 @@ for each student.
         for (Assignment assignment : assignments) {
             for (int i = 0; i < registeredStudents.size(); i++) {
                 double score = random.nextDouble() * assignment.getMaxScore();
-                assignment.getScores().set(i, score);
+                assignment.getScores().set(i, (int) score);
             }
         }
         calculateFinalScores();
@@ -234,7 +235,7 @@ for each student.
 
             for (Assignment assignment : assignments) {
                 int score = assignment.getScores().get(i);
-                if (score != null) {
+                if (score >= 0) {
                     totalWeightedScores += score * assignment.getWeight();
                 }
             }
@@ -258,45 +259,45 @@ for each student.
     Average             90             81             81             78             84
             ```
 */
-    public void displayScores() {
-        System.out.println("Course : " + courseName + " (" + courseId + ")");
-
-        // Print course information
-        System.out.println("Course: " + courseName + "(" + courseId + ")");
-
-        // Print assignment headers
-        System.out.printf("%-20s", "");
-        for (Assignment assignment : assignments) {
-            System.out.printf("%-15s", assignment.getAssignmentName());
-        }
-        System.out.printf("%-15s%n", "Final Score");
-
-        // Print student scores
-        for (int i = 0; i < registeredStudents.size(); i++) {
-            Student student = registeredStudents.get(i);
-            System.out.printf("%-20s", student.getStudentName());
-            for (Assignment assignment : assignments) {
-                int score = assignment.getScores().get(i);
-                System.out.printf("%-15s", (score != null) ? score : "null");
-            }
-            System.out.printf("%-15s%n", finalScores.get(i).intValue());
-        }
-
-        // Print assignment averages
-        System.out.printf("%-20s", "Average");
-        for (Assignment assignment : assignments) {
-            System.out.printf("%-15s", Math.round(assignment.calculateAverageScore()));
-        }
-        System.out.println();
-
-    }
+//    public void displayScores() {
+//        System.out.println("Course : " + courseName + " (" + courseId + ")");
+//
+//        // Print course information
+//        System.out.println("Course: " + courseName + "(" + courseId + ")");
+//
+//        // Print assignment headers
+//        System.out.printf("%-20s", "");
+//        for (Assignment assignment : assignments) {
+//            System.out.printf("%-15s", assignment.getAssignmentName());
+//        }
+//        System.out.printf("%-15s%n", "Final Score");
+//
+//        // Print student scores
+//        for (int i = 0; i < registeredStudents.size(); i++) {
+//            Student student = registeredStudents.get(i);
+//            System.out.printf("%-20s", student.getStudentName());
+//            for (Assignment assignment : assignments) {
+//                int score = assignment.getScores().get(i);
+//                PrintStream printf = System.out.printf("%-15s", (score >= 0) ? score : "null");
+//            }
+//            System.out.printf("%-15s%n", finalScores.get(i).intValue());
+//        }
+//
+//        // Print assignment averages
+//        System.out.printf("%-20s", "Average");
+//        for (Assignment assignment : assignments) {
+//            System.out.printf("%-15s", Math.round(assignment.calculateAverageScore()));
+//        }
+//        System.out.println();
+//
+//    }
 
 /*______________________________________________________________________________________________________________________
 7. `String toSimplifiedString()` // converts a course to a simple string with only the `courseId`, `courseName`,
 `credits`, and `departmentName`.
  */
     public String toSimplifiedString1() {
-        return String.format("Course ID : " + + courseId +
+        return String.format("Course ID : " + courseId +
                 "\nCourse Name : " + courseName +
                 "\nCredits : " + credits +
                 "\nDepartment : " + department.getDepartmentName());
